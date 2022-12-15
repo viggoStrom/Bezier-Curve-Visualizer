@@ -45,7 +45,7 @@ class linearInterpolation {
 
     update = (u) => {
         this.drawLine()
-        this.drawU()
         this.setU(u)
+        this.drawU()
     }
 }
