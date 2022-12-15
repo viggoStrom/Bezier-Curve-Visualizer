@@ -22,7 +22,7 @@ class linearInterpolation {
     }
 
     setU = (u) => {
-        if (u < 0 || u > 1) {
+        if (u.toFixed(5) < 0 || u.toFixed(5) > 1) {
             return console.error(`LinearInterpolation(): u is only defined for 0 <= u <= 1 and ${u} is not within the span`);
         }
 
@@ -34,6 +34,20 @@ class linearInterpolation {
         return [this.ux, this.uy]
     }
 
+    getXY1 = () => {
+        return [this.x1, this.y1]
+    }
+    getXY2 = () => {
+        return [this.x2, this.y2]
+    }
+
+    setXY = (xy1, xy2) => {
+        this.x1 = xy1[0]
+        this.y1 = xy1[1]
+        this.x2 = xy2[0]
+        this.y2 = xy2[1]
+    }
+
     drawU = () => {
         ctx.strokeStyle = "#363636"
         ctx.lineWidth = 4
@@ -43,9 +57,24 @@ class linearInterpolation {
         ctx.stroke()
     }
 
-    update = (u) => {
-        this.drawLine()
+    update = (u, xy1, xy2) => {
+        this.setXY(xy1, xy2)
         this.setU(u)
+
+        this.drawLine()
         this.drawU()
+    }
+}
+
+class marker {
+    constructor() {
+        this.cache = {}
+    }
+
+    update = (xy) => {
+        this.cache[xy[0]] = xy[1]
+
+        ctx.beginPath()
+        ctx.moveTo(xy[0], xy[1])
     }
 }
