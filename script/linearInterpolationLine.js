@@ -68,13 +68,31 @@ class linearInterpolation {
 
 class marker {
     constructor() {
-        this.cache = {}
+        this.cache = []
+    }
+
+
+    setXY = (xy) => {
+        this.cache.push({ x: xy[0], y: xy[1] })
+    }
+
+    drawPath = () => {
+        const cacheLength = this.cache.length
+
+        for (let index = 0; index < cacheLength; index++) {
+            const x = this.cache[index].x
+            const y = this.cache[index].y
+
+            ctx.fillStyle = "red"
+            ctx.beginPath()
+            ctx.arc(x, y, 2, 0, 2 * Math.PI)
+            ctx.fill()
+        }
     }
 
     update = (xy) => {
-        this.cache[xy[0]] = xy[1]
+        this.setXY(xy)
 
-        ctx.beginPath()
-        ctx.moveTo(xy[0], xy[1])
+        this.drawPath()
     }
 }

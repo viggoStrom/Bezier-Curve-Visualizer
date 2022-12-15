@@ -26,6 +26,7 @@ const frame = () => {
     
     if (temporaryGlobalU > 1) {
         temporaryGlobalU = 0
+        pen.cache = []
     } else {
         temporaryGlobalU += .005
     }
@@ -36,6 +37,7 @@ const frame = () => {
     line4.update(temporaryGlobalU, line1.getU(), line2.getU())
     line5.update(temporaryGlobalU, line2.getU(), line3.getU())
     line6.update(temporaryGlobalU, line4.getU(), line5.getU())
+    
     pen.update(line6.getU())
 
     window.requestAnimationFrame(frame)
