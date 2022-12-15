@@ -1,0 +1,25 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    background-color: #363636;
+    color: white;
+}
+
+section {
+    display: flex;
+    flex-flow: column nowrap;
+
+    align-items: center;
+}
+
+canvas {
+    width: 60rem;
+    aspect-ratio: 3/2;
+    
+    background-color: whitesmoke;
+
+    padding: 0rem;
+    margin: 2rem;
+}
