@@ -15,7 +15,7 @@ section {
 }
 
 canvas {
-    width: 60rem;
+    width: 60%;
     aspect-ratio: 3/2;
     
     background-color: whitesmoke;
